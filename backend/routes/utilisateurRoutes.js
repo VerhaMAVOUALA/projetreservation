@@ -119,6 +119,9 @@ router.post('/connexion', async (req, res) => {
 
         // Vérifier le mot de passe
         const validPassword = await bcrypt.compare(mot_de_passe_hash, user.rows[0].mot_de_passe_hash);
+        console.log("Email reçu :", email);
+        console.log("Mot de passe reçu :", mot_de_passe_hash);
+        console.log("Utilisateur trouvé :", user.rows[0]);
         if (!validPassword) {
             return res.status(401).json({ success: false, message: 'Identifiants incorrects' });
         }
